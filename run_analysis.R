@@ -1,16 +1,16 @@
 library(reshape2)
 
 # Load the various datasets
-test.subject <- read.table("./data/UCI HAR Dataset/test/subject_test.txt")
-test.x <- read.table("./data/UCI HAR Dataset/test/X_test.txt")
-test.y <- read.table("./data/UCI HAR Dataset/test/y_test.txt")
+test.subject <- read.table("./test/subject_test.txt")
+test.x <- read.table("./test/X_test.txt")
+test.y <- read.table("./test/y_test.txt")
 
-train.subject <- read.table("./data/UCI HAR Dataset/train/subject_train.txt")
-train.x <- read.table("./data/UCI HAR Dataset/train/X_train.txt")
-train.y <- read.table("./data/UCI HAR Dataset/train/y_train.txt")
+train.subject <- read.table("./train/subject_train.txt")
+train.x <- read.table("./train/X_train.txt")
+train.y <- read.table("./train/y_train.txt")
 
-features <- read.table("./data/UCI HAR Dataset/features.txt")
-activity.labels <- read.table("./data/UCI HAR Dataset/activity_labels.txt")
+features <- read.table("./features.txt")
+activity.labels <- read.table("./activity_labels.txt")
 
 # Merge the test and train subject datasets
 subject <- rbind(test.subject, train.subject)
@@ -37,3 +37,6 @@ means = dcast(melted , subject + label ~ variable, mean)
 
 # Save the resulting dataset
 write.table(means, file="./data/tidy_data.txt")
+
+# Output final dataset
+means
